@@ -3,20 +3,23 @@
 }
 <p> <a asp-controller="Cheese" asp-action="RemoveCheese"> Remove Cheese</a></p>
 
-@{List <string> cheeseArray = new List<string>(); }
+<h1> Remove Cheese</h1>
+
+ @if (ViewBag.cheeses.Count == 0)
+{
+
+    <p> No Cheese to remove</p>
+}
+
+
 
 <form method="post">
 
     @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
     {
-        @cheeseArray.Add(cheese.Key); 
-        
-
-        @foreach (string item in cheeseArray)
-        {
-        <input type="checkbox" name=" name" />@item
-        }
-
+       
+        <input type="checkbox" name="name" />@cheese.Key
     }
+
 
 </form>

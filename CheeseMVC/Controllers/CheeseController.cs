@@ -31,6 +31,12 @@ namespace CheeseMVC.Controllers
             return View();
         }
 
+        public IActionResult RemoveCheese()
+        {
+            return View();
+        }
+
+
 
         [HttpPost]
         [Route("/Cheese/AddCheese")]
@@ -48,10 +54,13 @@ namespace CheeseMVC.Controllers
 
         [HttpPost]
         [Route("/Cheese/RemoveCheese")]
-        public IActionResult RemoveCheese(string name, string description)
+        public IActionResult WipeCheese(string[] name)
         {
-            Cheeses.Remove(name);
-            return Redirect("/Cheeses");
+            foreach(string item in name)
+            {
+                Cheeses.Remove(item);
+            }
+            return Redirect("/Cheese");
         }
 
     }
